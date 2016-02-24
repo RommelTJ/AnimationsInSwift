@@ -45,11 +45,21 @@ class ViewController: UIViewController {
         */
         
         //UIViewAnimationOptions - Autoreversing the animation.
+        /*
         let options = UIViewAnimationOptions.Autoreverse
         UIView.animateWithDuration(1.0, delay: 0.0, options: options, animations: { () -> Void in
             square.backgroundColor = UIColor.orangeColor()
             square.frame = CGRect(x: self.viewWidth - self.squareSide, y: 120, width: self.squareSide, height: self.squareSide)
             }, completion: nil)
+        */
+        
+        //UIViewAnimationOptions - Combining multiple animations in Swift 2.0
+        let options: UIViewAnimationOptions = [UIViewAnimationOptions.Autoreverse, UIViewAnimationOptions.Repeat, UIViewAnimationOptions.CurveEaseInOut]
+        UIView.animateWithDuration(1.0, delay: 0.0, options: options, animations: { () -> Void in
+        square.backgroundColor = UIColor.orangeColor()
+        square.frame = CGRect(x: self.viewWidth - self.squareSide, y: 120, width: self.squareSide, height: self.squareSide)
+        }, completion: nil)
+        
     }
 
     override func didReceiveMemoryWarning() {
