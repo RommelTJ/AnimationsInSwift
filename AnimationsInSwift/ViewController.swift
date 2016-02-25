@@ -19,6 +19,7 @@ class ViewController: UIViewController {
     var squareView: UIView!
     var running = false
     @IBOutlet weak var animateButton: UIButton!
+    @IBOutlet weak var numberOfFishSlider: UISlider!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -87,7 +88,8 @@ class ViewController: UIViewController {
     }
     
     @IBAction func animateFish(sender: AnyObject) {
-        for _ in 1...10 {
+        let numberOfFish = Int(self.numberOfFishSlider.value)
+        for _ in 1...numberOfFish {
             //Set a random size between 50.0 and 100.0
             let newSize = CGFloat(arc4random_uniform(50))+50
             //Set a random yPosition between 20.0 and 350.0
