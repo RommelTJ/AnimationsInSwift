@@ -85,6 +85,32 @@ class ViewController: UIViewController {
                 newView.removeFromSuperview()
         }
     }
+    
+    @IBAction func animateFish(sender: AnyObject) {
+        for _ in 1...10 {
+            //Set a random size between 50.0 and 100.0
+            let newSize = CGFloat(arc4random_uniform(50))+50
+            //Set a random yPosition between 20.0 and 350.0
+            let newYPosition = CGFloat(arc4random_uniform(300))+20
+            //Set the animation options.
+            let options = UIViewAnimationOptions.CurveLinear
+            //Set a random delay between 0s and 0.4s.
+            let newDelay = NSTimeInterval(arc4random_uniform(400)) / 1000
+            
+            //Add the Fish ImageView to the frame.
+            let imageView = UIImageView(image: UIImage(named: "doris_fish_blue_small"))
+            imageView.frame = CGRect(x: 0 - newSize, y: newYPosition, width: newSize, height: newSize)
+            self.view.addSubview(imageView)
+            
+            //Animate the view.
+            UIView.animateWithDuration(duration, delay: newDelay, options: options, animations: { () -> Void in
+                imageView.frame = CGRect(x: self.viewWidth, y: newYPosition, width: newSize, height: newSize)
+                }, completion: { (animationFinished) -> Void in
+                    imageView.removeFromSuperview()
+            })
+        }
+    }
+    
 
 }
 

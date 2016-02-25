@@ -32,14 +32,24 @@
                                     <action selector="randomAnimate:" destination="BYZ-38-t0r" eventType="touchUpInside" id="g74-EC-SJL"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="idk-LB-u20">
+                                <rect key="frame" x="20" y="474" width="560" height="30"/>
+                                <state key="normal" title="Animate Fish"/>
+                                <connections>
+                                    <action selector="animateFish:" destination="BYZ-38-t0r" eventType="touchUpInside" id="ZzS-6J-2fy"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="NB7-gX-kB5" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="4vy-LT-cQG"/>
                             <constraint firstItem="NB7-gX-kB5" firstAttribute="top" secondItem="oCo-qV-y5A" secondAttribute="bottom" constant="8" id="Ayq-tX-dGh"/>
                             <constraint firstAttribute="trailingMargin" secondItem="oCo-qV-y5A" secondAttribute="trailing" id="PNN-A7-dfp"/>
+                            <constraint firstItem="idk-LB-u20" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="SgX-5M-zWi"/>
                             <constraint firstItem="NB7-gX-kB5" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" id="ZjK-46-OSr"/>
+                            <constraint firstItem="oCo-qV-y5A" firstAttribute="top" secondItem="idk-LB-u20" secondAttribute="bottom" constant="8" id="bQr-Oa-ca3"/>
                             <constraint firstItem="oCo-qV-y5A" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="cKd-np-elG"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="idk-LB-u20" secondAttribute="trailing" id="gw1-C8-Toa"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="NB7-gX-kB5" secondAttribute="bottom" constant="20" id="p7N-2Q-EsH"/>
                         </constraints>
                     </view>
