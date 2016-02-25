@@ -13,6 +13,9 @@ class ViewController: UIViewController {
     var squareSide: CGFloat = 50
     var viewWidth: CGFloat = 0
     var viewHeight: CGFloat = 0
+    var yPosition: CGFloat = 120
+    var duration = 1.0
+    var delay = 0.0
     var squareView: UIView!
     var running = false
     @IBOutlet weak var animateButton: UIButton!
@@ -27,7 +30,8 @@ class ViewController: UIViewController {
         //Create and add a red square.
         squareView = UIView()
         squareView.backgroundColor = UIColor.redColor()
-        squareView.frame = CGRect(x: 0, y: 120, width: squareSide, height: squareSide)
+        squareView.frame = CGRect(x: 0, y: yPosition, width: squareSide, height: squareSide)
+        squareView.alpha = 0.0
         self.view.addSubview(squareView)
         
     }
@@ -38,20 +42,21 @@ class ViewController: UIViewController {
     }
     
     @IBAction func animateSquare(sender: AnyObject) {
+        self.squareView.alpha = 1.0
         if (running) {
             //Animate the square back to the starting position.
-            UIView.animateWithDuration(1.0, animations: { () -> Void in
+            UIView.animateWithDuration(duration, animations: { () -> Void in
                 self.squareView.backgroundColor = UIColor.redColor()
-                self.squareView.frame = CGRect(x: 0, y: 120, width: self.squareSide, height: self.squareSide)
+                self.squareView.frame = CGRect(x: 0, y: self.yPosition, width: self.squareSide, height: self.squareSide)
             })
             self.running = false
             self.animateButton.setTitle("Animate", forState: .Normal)
         } else {
             //UIViewAnimationOptions - Combining multiple animations in Swift 2.0
             let options: UIViewAnimationOptions = [UIViewAnimationOptions.Autoreverse, UIViewAnimationOptions.Repeat, UIViewAnimationOptions.CurveEaseInOut]
-            UIView.animateWithDuration(1.0, delay: 0.0, options: options, animations: { () -> Void in
+            UIView.animateWithDuration(duration, delay: delay, options: options, animations: { () -> Void in
                 self.squareView.backgroundColor = UIColor.orangeColor()
-                self.squareView.frame = CGRect(x: self.viewWidth - self.squareSide, y: 120, width: self.squareSide, height: self.squareSide)
+                self.squareView.frame = CGRect(x: self.viewWidth - self.squareSide, y: self.yPosition, width: self.squareSide, height: self.squareSide)
                 }, completion: nil)
             
             self.running = true
@@ -60,6 +65,26 @@ class ViewController: UIViewController {
         
     }
 
+    @IBAction func randomAnimate(sender: AnyObject) {
+        //Set a random size between 20.0 and 60.0
+        let newSize = CGFloat(arc4random_uniform(40))+20
+        //Set a random yPosition between 20.0 and 220.0
+        let newYPosition = CGFloat(arc4random_uniform(200))+20
+        
+        //Add a new view to the frame.
+        let newView = UIView()
+        newView.backgroundColor = UIColor.redColor()
+        newView.frame = CGRect(x: 0, y: newYPosition, width: newSize, height: newSize)
+        self.view.addSubview(newView)
+        
+        //Animate the view.
+        UIView.animateWithDuration(self.duration, animations: { () -> Void in
+            newView.backgroundColor = UIColor.orangeColor()
+            newView.frame = CGRect(x: self.viewWidth - newSize, y: newYPosition, width: newSize, height: newSize)
+            }) { (animationFinished) -> Void in
+                newView.removeFromSuperview()
+        }
+    }
 
 }
 
