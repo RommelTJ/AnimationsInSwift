@@ -89,7 +89,7 @@
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dLs-a5-nG9">
                                 <rect key="frame" x="20" y="550" width="560" height="30"/>
-                                <state key="normal" title="Animate"/>
+                                <state key="normal" title="Container View Transition Animation"/>
                                 <connections>
                                     <action selector="doAnimate:" destination="S10-1q-lBU" eventType="touchUpInside" id="DXJ-Oe-2xw"/>
                                 </connections>
