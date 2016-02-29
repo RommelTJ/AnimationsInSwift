@@ -61,6 +61,7 @@ class MoreAnimationsViewController: UIViewController {
         let transitionOptions = UIViewAnimationOptions.TransitionCurlUp
         
         //Animation
+        /*
         UIView.transitionWithView(self.container, duration: 1.0, options: transitionOptions, animations: { () -> Void in
             //Remove the front object.
             views.frontView.removeFromSuperview()
@@ -69,6 +70,8 @@ class MoreAnimationsViewController: UIViewController {
             }) { (finished) -> Void in
                 print("Finished")
         }
+        */
+        UIView.transitionFromView(views.frontView, toView: views.backView, duration: 1.0, options: transitionOptions, completion: nil)
     }
 
 }
