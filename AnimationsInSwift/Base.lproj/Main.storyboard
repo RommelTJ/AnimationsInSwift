@@ -94,11 +94,21 @@
                                     <action selector="doAnimate:" destination="S10-1q-lBU" eventType="touchUpInside" id="DXJ-Oe-2xw"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="T0J-j8-zsN">
+                                <rect key="frame" x="20" y="512" width="560" height="30"/>
+                                <state key="normal" title="Animate Blue Fish"/>
+                                <connections>
+                                    <action selector="animateBlueFish:" destination="S10-1q-lBU" eventType="touchUpInside" id="zDd-im-Qil"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="dLs-a5-nG9" firstAttribute="top" secondItem="T0J-j8-zsN" secondAttribute="bottom" constant="8" id="1Mf-1a-xdJ"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="T0J-j8-zsN" secondAttribute="trailing" id="Acx-ld-XUY"/>
                             <constraint firstItem="dLs-a5-nG9" firstAttribute="leading" secondItem="Fud-TV-xcY" secondAttribute="leadingMargin" id="I8J-re-2vs"/>
                             <constraint firstAttribute="trailingMargin" secondItem="dLs-a5-nG9" secondAttribute="trailing" id="SlV-9H-rCX"/>
+                            <constraint firstItem="T0J-j8-zsN" firstAttribute="leading" secondItem="Fud-TV-xcY" secondAttribute="leadingMargin" id="orN-jm-8Bb"/>
                             <constraint firstItem="5Rg-ym-P5u" firstAttribute="top" secondItem="dLs-a5-nG9" secondAttribute="bottom" constant="20" id="yQB-PJ-klN"/>
                         </constraints>
                     </view>

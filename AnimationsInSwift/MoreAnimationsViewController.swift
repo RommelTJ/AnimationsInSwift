@@ -13,9 +13,11 @@ class MoreAnimationsViewController: UIViewController {
     var viewWidth: CGFloat = 0
     var viewHeight: CGFloat = 0
     var containerSetup = false
+    var fishSetup = false
     let container = UIView()
     let redSquare = UIView()
     let blueSquare = UIView()
+    let fish = UIImageView()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -89,5 +91,70 @@ class MoreAnimationsViewController: UIViewController {
         }
         */
         UIView.transitionFromView(views.frontView, toView: views.backView, duration: 1.0, options: transitionOptions, completion: nil)
+    }
+    
+    @IBAction func animateBlueFish(sender: AnyObject) {
+        if (containerSetup == true) {
+            //Remove the old setup.
+            self.container.removeFromSuperview()
+            containerSetup = false
+            animateFish()
+        } else {
+            animateFish()
+        }
+    }
+    
+    func animateFish() {
+        if (fishSetup == false) {
+            setFishView()
+        }
+        
+        //Angles in iOS are measured as radians. PI is 180 degrees, so PI * 2 = 360 degrees.
+        let fullRotation = CGFloat(M_PI * 2)
+        
+        //Animate the fish.
+        let duration = 2.0
+        let delay = 0.0
+        //let options = UIViewKeyframeAnimationOptions.CalculationModeLinear
+        let options = UIViewKeyframeAnimationOptions.CalculationModePaced
+        //Because we set it to CalculationModePaced the relative values below are ignored and paced evenly.
+        UIView.animateKeyframesWithDuration(duration, delay: delay, options: options, animations: { () -> Void in
+            //Each Keyframe needs to be added here.
+            //Within each keyframe, the relativeStartTime and relativeDuration need to be values between 0.0 and 1.0.
+            
+            //FIRST KEYFRAME
+            UIView.addKeyframeWithRelativeStartTime(0, relativeDuration: 1/3, animations: { () -> Void in
+                //Start: 0.0s
+                //Duration: 0.67s (2s * 1/3)
+                //End: 0.67s.
+                self.fish.transform = CGAffineTransformMakeRotation(1/3 * fullRotation)
+            })
+            
+            //SECOND KEYFRAME
+            UIView.addKeyframeWithRelativeStartTime(1/3, relativeDuration: 1/3, animations: { () -> Void in
+                //Start: 0.67s
+                //Duration: 0.67s (2s * 1/3)
+                //End: 1.34s.
+                self.fish.transform = CGAffineTransformMakeRotation(2/3 * fullRotation)
+            })
+            
+            //THIRD KEYFRAME
+            UIView.addKeyframeWithRelativeStartTime(2/3, relativeDuration: 1/3, animations: { () -> Void in
+                //Start: 1.34s
+                //Duration: 0.67s (2s * 1/3)
+                //End: 2.0s.
+                self.fish.transform = CGAffineTransformMakeRotation(3/3 * fullRotation)
+            })
+
+            }) { (success) -> Void in
+                print("Finished Roating Fish... poor fishy!")
+        }//end animateKeyframesWithDuration
+    }//end animateFish
+    
+    func setFishView() {
+        fish.image = UIImage(named: "doris_fish_blue_small")
+        fish.frame = CGRect(x: self.viewWidth/2 - (50/2), y: 100, width: 50, height: 50)
+        self.view.addSubview(fish)
+        fishSetup = true
     }
 }
