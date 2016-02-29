@@ -14,6 +14,7 @@
 		779BA00C1C7E680600795E71 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 779BA00A1C7E680600795E71 /* LaunchScreen.storyboard */; };
 		779BA0171C7E680600795E71 /* AnimationsInSwiftTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 779BA0161C7E680600795E71 /* AnimationsInSwiftTests.swift */; };
 		779BA0221C7E680600795E71 /* AnimationsInSwiftUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 779BA0211C7E680600795E71 /* AnimationsInSwiftUITests.swift */; };
+		77ECCB501C84126200354BAE /* MoreAnimationsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77ECCB4F1C84126200354BAE /* MoreAnimationsViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,6 +48,7 @@
 		779BA01D1C7E680600795E71 /* AnimationsInSwiftUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AnimationsInSwiftUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		779BA0211C7E680600795E71 /* AnimationsInSwiftUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimationsInSwiftUITests.swift; sourceTree = "<group>"; };
 		779BA0231C7E680600795E71 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		77ECCB4F1C84126200354BAE /* MoreAnimationsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MoreAnimationsViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,6 +101,7 @@
 			children = (
 				779BA0011C7E680600795E71 /* AppDelegate.swift */,
 				779BA0031C7E680600795E71 /* ViewController.swift */,
+				77ECCB4F1C84126200354BAE /* MoreAnimationsViewController.swift */,
 				779BA0051C7E680600795E71 /* Main.storyboard */,
 				779BA0081C7E680600795E71 /* Assets.xcassets */,
 				779BA00A1C7E680600795E71 /* LaunchScreen.storyboard */,
@@ -258,6 +261,7 @@
 			files = (
 				779BA0041C7E680600795E71 /* ViewController.swift in Sources */,
 				779BA0021C7E680600795E71 /* AppDelegate.swift in Sources */,
+				77ECCB501C84126200354BAE /* MoreAnimationsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -484,6 +488,7 @@
 				779BA0281C7E680600795E71 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		779BA0291C7E680600795E71 /* Build configuration list for PBXNativeTarget "AnimationsInSwiftTests" */ = {
 			isa = XCConfigurationList;
@@ -492,6 +497,7 @@
 				779BA02B1C7E680600795E71 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		779BA02C1C7E680600795E71 /* Build configuration list for PBXNativeTarget "AnimationsInSwiftUITests" */ = {
 			isa = XCConfigurationList;
@@ -500,6 +506,7 @@
 				779BA02E1C7E680600795E71 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
