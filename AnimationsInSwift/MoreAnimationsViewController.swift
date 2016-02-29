@@ -46,7 +46,16 @@ class MoreAnimationsViewController: UIViewController {
     
     @IBAction func doAnimate(sender: AnyObject) {
         //Create a tuple of views.
-        let views = (frontView: self.redSquare, backView: self.blueSquare)
+        var views : (frontView: UIView, backView: UIView)
+        
+        //If redSquare has a parent view (e.g it's in the container),
+        //set redSquare as front, and blueSquare as back.
+        //Otherwise flip the order.
+        if ((self.redSquare.superview) != nil) {
+            views = (frontView: self.redSquare, backView: self.blueSquare)
+        } else {
+            views = (frontView: self.blueSquare, backView: self.redSquare)
+        }
         
         //Set a transition style.
         let transitionOptions = UIViewAnimationOptions.TransitionCurlUp
