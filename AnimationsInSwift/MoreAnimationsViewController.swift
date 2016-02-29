@@ -58,7 +58,9 @@ class MoreAnimationsViewController: UIViewController {
         }
         
         //Set a transition style.
-        let transitionOptions = UIViewAnimationOptions.TransitionCurlUp
+        //let transitionOptions = UIViewAnimationOptions.TransitionCurlUp
+        //let transitionOptions = UIViewAnimationOptions.TransitionCurlDown
+        let transitionOptions = UIViewAnimationOptions.TransitionFlipFromLeft
         
         //Animation
         /*
