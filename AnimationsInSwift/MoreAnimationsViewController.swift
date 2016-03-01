@@ -19,6 +19,7 @@ class MoreAnimationsViewController: UIViewController {
     let redSquare = UIView()
     let blueSquare = UIView()
     let fish = UIImageView()
+    var fishes = [UIImageView]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -179,18 +180,52 @@ class MoreAnimationsViewController: UIViewController {
             setFishBezierView()
         }
         
-        //DO STUFF
+        for i in 0...5 {
+            //Random y offset between 0 and 150.0
+            let randomYOffset = CGFloat(arc4random_uniform(150))
+
+            //Create a Bezier path that defines our curve.
+            //The animation function needs the curve defined as a CGPath but these are more difficult to work with, so instead
+            //we'll create a UIBezierPath, and then create a CGPath from the bezier when we need it
+            let path = UIBezierPath()
+            path.moveToPoint(CGPoint(x: 16,y: 239 + randomYOffset))
+            //path.addCurveToPoint(CGPoint(x: 301, y: 239), controlPoint1: CGPoint(x: 136, y: 373), controlPoint2: CGPoint(x: 178, y: 110))
+            path.addCurveToPoint(CGPoint(x: viewWidth, y: 239 + randomYOffset),
+                controlPoint1: CGPoint(x: viewWidth/2.5, y: 373 + randomYOffset),
+                controlPoint2: CGPoint(x: viewWidth/2, y: 110 + randomYOffset))
+            
+            // create a new CAKeyframeAnimation that animates the objects position
+            let anim = CAKeyframeAnimation(keyPath: "position")
+            // set the animations path to our bezier curve
+            anim.path = path.CGPath
+            // set some more parameters for the animation
+            // this rotation mode means that our object will rotate so that it's parallel to whatever point it is currently on the curve
+            anim.rotationMode = kCAAnimationRotateAuto
+            anim.repeatCount = Float.infinity
+            //Each square will take between 4.0 and 8.0 seconds to complete one animation loop
+            anim.duration = Double(arc4random_uniform(40)+30) / 10
+            //Stagger each animation by a random value
+            //290 was chosen simply by experimentation
+            anim.timeOffset = Double(arc4random_uniform(290))
+            
+            // we add the animation to the squares 'layer' property
+            fishes[i].layer.addAnimation(anim, forKey: "animate position along path")
+        }
     }
     
     func setFishBezierView() {
         //Add the background
         let oceanBackground = UIImageView(image: UIImage(named: "ocean"))
-        oceanBackground.contentMode = UIViewContentMode.ScaleToFill
+        oceanBackground.contentMode = UIViewContentMode.ScaleAspectFill
+        oceanBackground.frame = CGRect(x: 0, y: 0, width: viewWidth, height: viewHeight * 0.7)
         self.view.addSubview(oceanBackground)
         //Add the Fish
-        fish.image = UIImage(named: "doris_fish_blue_small")
-        fish.frame = CGRect(x: self.viewWidth/2 - (50/2), y: 100, width: 50, height: 50)
-        self.view.addSubview(fish)
+        for i in 0...5 {
+            fishes.append(UIImageView())
+            fishes[i].image = UIImage(named: "doris_fish_blue_small")
+            fishes[i].frame = CGRect(x: self.viewWidth/2 - (50/2), y: 300, width: 50, height: 50)
+            self.view.addSubview(fishes[i])
+        }
         fishBezierSetup = true
     }
     
