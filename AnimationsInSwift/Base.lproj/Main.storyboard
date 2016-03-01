@@ -86,7 +86,61 @@
                     <view key="view" contentMode="scaleToFill" id="Fud-TV-xcY">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dLs-a5-nG9">
+                                <rect key="frame" x="20" y="550" width="560" height="30"/>
+                                <state key="normal" title="Container View Transition Animation"/>
+                                <connections>
+                                    <action selector="doAnimate:" destination="S10-1q-lBU" eventType="touchUpInside" id="DXJ-Oe-2xw"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="T0J-j8-zsN">
+                                <rect key="frame" x="20" y="512" width="560" height="30"/>
+                                <state key="normal" title="Animate Blue Fish"/>
+                                <connections>
+                                    <action selector="animateBlueFish:" destination="S10-1q-lBU" eventType="touchUpInside" id="zDd-im-Qil"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="x8y-JP-Dtz">
+                                <rect key="frame" x="20" y="474" width="560" height="30"/>
+                                <state key="normal" title="Fish along Bezier Curve"/>
+                                <connections>
+                                    <action selector="animateFishAlongBezierCurve:" destination="S10-1q-lBU" eventType="touchUpInside" id="Hai-2h-6rV"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6Lv-Is-OrR">
+                                <rect key="frame" x="20" y="436" width="560" height="30"/>
+                                <state key="normal" title="Animate Circle using Bezier Curve"/>
+                                <connections>
+                                    <action selector="animateCircleBezier:" destination="S10-1q-lBU" eventType="touchUpInside" id="eFZ-CS-3io"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RmO-Vt-oTX">
+                                <rect key="frame" x="20" y="398" width="560" height="30"/>
+                                <state key="normal" title="Standard System Animation"/>
+                                <connections>
+                                    <action selector="doStandardAnimation:" destination="S10-1q-lBU" eventType="touchUpInside" id="aqj-Cd-UUy"/>
+                                </connections>
+                            </button>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="dLs-a5-nG9" firstAttribute="top" secondItem="T0J-j8-zsN" secondAttribute="bottom" constant="8" id="1Mf-1a-xdJ"/>
+                            <constraint firstItem="x8y-JP-Dtz" firstAttribute="leading" secondItem="Fud-TV-xcY" secondAttribute="leadingMargin" id="5BM-wj-gH4"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="T0J-j8-zsN" secondAttribute="trailing" id="Acx-ld-XUY"/>
+                            <constraint firstItem="RmO-Vt-oTX" firstAttribute="leading" secondItem="Fud-TV-xcY" secondAttribute="leadingMargin" id="Ah6-lw-TnQ"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="RmO-Vt-oTX" secondAttribute="trailing" id="Bjy-0z-ymy"/>
+                            <constraint firstItem="dLs-a5-nG9" firstAttribute="leading" secondItem="Fud-TV-xcY" secondAttribute="leadingMargin" id="I8J-re-2vs"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="dLs-a5-nG9" secondAttribute="trailing" id="SlV-9H-rCX"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="6Lv-Is-OrR" secondAttribute="trailing" id="cjk-Ky-t1b"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="x8y-JP-Dtz" secondAttribute="trailing" id="ilK-jY-yJM"/>
+                            <constraint firstItem="6Lv-Is-OrR" firstAttribute="leading" secondItem="Fud-TV-xcY" secondAttribute="leadingMargin" id="oKY-nb-xjL"/>
+                            <constraint firstItem="T0J-j8-zsN" firstAttribute="leading" secondItem="Fud-TV-xcY" secondAttribute="leadingMargin" id="orN-jm-8Bb"/>
+                            <constraint firstItem="6Lv-Is-OrR" firstAttribute="top" secondItem="RmO-Vt-oTX" secondAttribute="bottom" constant="8" id="rMB-7D-w8i"/>
+                            <constraint firstItem="T0J-j8-zsN" firstAttribute="top" secondItem="x8y-JP-Dtz" secondAttribute="bottom" constant="8" id="s1p-PW-pRH"/>
+                            <constraint firstItem="5Rg-ym-P5u" firstAttribute="top" secondItem="dLs-a5-nG9" secondAttribute="bottom" constant="20" id="yQB-PJ-klN"/>
+                            <constraint firstItem="x8y-JP-Dtz" firstAttribute="top" secondItem="6Lv-Is-OrR" secondAttribute="bottom" constant="8" id="z4M-js-J4t"/>
+                        </constraints>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="c4H-q8-hHu" userLabel="First Responder" sceneMemberID="firstResponder"/>
