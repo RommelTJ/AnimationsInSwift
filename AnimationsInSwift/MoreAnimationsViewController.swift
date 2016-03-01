@@ -15,6 +15,8 @@ class MoreAnimationsViewController: UIViewController {
     var containerSetup = false
     var fishSetup = false
     var fishBezierSetup = false
+    var circleBezierSetup = false
+    var standardAnimationSetup = false
     let container = UIView()
     let redSquare = UIView()
     let blueSquare = UIView()
@@ -228,5 +230,82 @@ class MoreAnimationsViewController: UIViewController {
         }
         fishBezierSetup = true
     }
+    
+    @IBAction func animateCircleBezier(sender: AnyObject) {
+        if (fishBezierSetup == true || fishSetup == true || containerSetup == true) {
+            //Remove any subviews.
+            for subview in view.subviews {
+                subview.removeFromSuperview()
+            }
+            fishSetup = false
+            containerSetup = false
+            fishBezierSetup = false
+        }
+        
+        //Set up some values to use in the curve
+        let ovalStartAngle = CGFloat(90.01 * M_PI/180)
+        let ovalEndAngle = CGFloat(90 * M_PI/180)
+        let ovalRect = CGRect(x: viewWidth/2 - (125/2), y: 100, width: 125, height: 125)
+        
+        // create the bezier path
+        let ovalPath = UIBezierPath()
+        ovalPath.addArcWithCenter(CGPointMake(CGRectGetMidX(ovalRect), CGRectGetMidY(ovalRect)),
+            radius: CGRectGetWidth(ovalRect) / 2,
+            startAngle: ovalStartAngle,
+            endAngle: ovalEndAngle, clockwise: true)
+        
+        //Create an object that represents how the curve should be presented on the screen
+        let progressLine = CAShapeLayer()
+        progressLine.path = ovalPath.CGPath
+        progressLine.strokeColor = UIColor.blueColor().CGColor
+        progressLine.fillColor = UIColor.clearColor().CGColor
+        progressLine.lineWidth = 10.0
+        progressLine.lineCap = kCALineCapRound
+        
+        // add the curve to the screen
+        self.view.layer.addSublayer(progressLine)
+        
+        //Create a basic animation that animates the value 'strokeEnd' from 0.0 to 1.0 over 3.0 seconds
+        let animateStrokeEnd = CABasicAnimation(keyPath: "strokeEnd")
+        animateStrokeEnd.duration = 3.0
+        animateStrokeEnd.fromValue = 0.0
+        animateStrokeEnd.toValue = 1.0
+        
+        // add the animation
+        progressLine.addAnimation(animateStrokeEnd, forKey: "animate stroke end animation")
+        circleBezierSetup = true
+    }
+    
+    @IBAction func doStandardAnimation(sender: AnyObject) {
+        if (fishBezierSetup == true || fishSetup == true || containerSetup == true || circleBezierSetup == true) {
+            //Remove any subviews.
+            for subview in view.subviews {
+                subview.removeFromSuperview()
+            }
+            fishSetup = false
+            containerSetup = false
+            fishBezierSetup = false
+            circleBezierSetup = false
+        }
+        
+        //Create and add the fish image to screen
+        let fish = UIImageView()
+        fish.image = UIImage(named: "doris_fish_blue_small")
+        fish.frame = CGRect(x: viewWidth/2 - 25, y: 100, width: 50, height: 50)
+        self.view.addSubview(fish)
+        
+        //Create an array of views to animate (in this case just one)
+        let viewsToAnimate = [fish]
+        
+        //Perform the system animation. As of iOS9, UISystemAnimation.Delete is the only valid option.
+        UIView.performSystemAnimation(UISystemAnimation.Delete, onViews: viewsToAnimate, options: UIViewAnimationOptions.TransitionCrossDissolve, animations: {
+            // any changes defined here will occur
+            // in parallel with the system animation
+            }, completion: { finished in
+                // any code entered here will be applied
+                // once the animation has completed
+        })
+    }
+    
     
 }
