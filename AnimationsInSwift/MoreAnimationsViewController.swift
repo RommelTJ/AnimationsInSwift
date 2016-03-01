@@ -14,6 +14,7 @@ class MoreAnimationsViewController: UIViewController {
     var viewHeight: CGFloat = 0
     var containerSetup = false
     var fishSetup = false
+    var fishBezierSetup = false
     let container = UIView()
     let redSquare = UIView()
     let blueSquare = UIView()
@@ -157,4 +158,40 @@ class MoreAnimationsViewController: UIViewController {
         self.view.addSubview(fish)
         fishSetup = true
     }
+    
+    @IBAction func animateFishAlongBezierCurve(sender: AnyObject) {
+        //Remove the old setup.
+        if (containerSetup == true) {
+            self.container.removeFromSuperview()
+            containerSetup = false
+            animateFishInCurve()
+        } else if (fishSetup == true) {
+            self.fish.removeFromSuperview()
+            fishSetup = false
+            animateFishInCurve()
+        } else {
+            animateFishInCurve()
+        }
+    }
+    
+    func animateFishInCurve() {
+        if (fishBezierSetup == false) {
+            setFishBezierView()
+        }
+        
+        //DO STUFF
+    }
+    
+    func setFishBezierView() {
+        //Add the background
+        let oceanBackground = UIImageView(image: UIImage(named: "ocean"))
+        oceanBackground.contentMode = UIViewContentMode.ScaleToFill
+        self.view.addSubview(oceanBackground)
+        //Add the Fish
+        fish.image = UIImage(named: "doris_fish_blue_small")
+        fish.frame = CGRect(x: self.viewWidth/2 - (50/2), y: 100, width: 50, height: 50)
+        self.view.addSubview(fish)
+        fishBezierSetup = true
+    }
+    
 }
